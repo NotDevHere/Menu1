@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu Utama</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    body {
+      background-color: #000;
+      color: #0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 150px;
+      height: 150px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      border: 2px solid #0f0;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 18px;
+      background-color: #0f0;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background-color: #1aff1a;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+      font-size: 13px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="title">NotDevScriptGood</div>
+
+  <div
+    class="logo"
+    id="logo"
+    style="background-image: url('https://files.catbox.moe/007wso.jpeg');"
+  ></div>
+
+  <div class="button-container">
+    <button onclick="goToLogin()">LOGIN</button>
+    <button onclick="goToRegister()">REGISTRASI</button>
+  </div>
+
+  <div class="error" id="errorMsg"></div>
+
+  <script>
+    const logo = document.getElementById('logo');
+    const url = logo.style.backgroundImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+    const allowedExtensions = /\.(jpe?g|png)$/i;
+    const isHttps = url.startsWith("https://");
+
+    if (!allowedExtensions.test(url) || !isHttps) {
+      document.getElementById("errorMsg").textContent =
+        "Format gambar tidak didukung. Gunakan HTTPS dan file .jpg, .jpeg, atau .png.";
+    }
+
+    function goToLogin() {
+      window.location.href = "Log.html";
+    }
+
+    function goToRegister() {
+      window.location.href = "reg.html";
+    }
+  </script>
+
+</body>
+</html>
